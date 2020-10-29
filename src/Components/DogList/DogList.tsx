@@ -3,10 +3,6 @@ import { Dog } from '../../Interfaces/Dog';
 
 const DogList: React.FC<any> = (props) => {
 
-  useEffect(() => {
-    console.log(props.dogList)
-  })
-
   const handleClick = (id: any, upOrDown: string, index: number) => {
     props.handleUpdateDog(id, upOrDown, index)
   }

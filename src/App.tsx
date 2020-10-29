@@ -14,8 +14,8 @@ const App = () => {
   }, [])
 
   const handleAddDog = async (dogInfo: Dog) => {
-    await postDoggo(dogInfo);
-    let updatedDogsArray = [...dogList, dogInfo]
+    const newDoggo = await postDoggo(dogInfo);
+    let updatedDogsArray = [...dogList, newDoggo]
     setDogList(updatedDogsArray)
   }
 

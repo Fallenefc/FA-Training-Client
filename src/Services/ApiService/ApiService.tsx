@@ -15,7 +15,7 @@ export const getDoggos = async (): Promise<any> => {
 export const postDoggo = async (dog: Dog): Promise<any> => {
   try {
     const res = await axios.post('http://localhost:3000/Doggos', dog);
-    console.log(res);
+    return res.data;
   }
   catch (e) {
     console.error(`Error trying to add data: ${e}`);
