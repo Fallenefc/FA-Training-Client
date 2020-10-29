@@ -3,7 +3,7 @@ import './App.css';
 import DogList from './Components/DogList/DogList';
 import { Dog } from './Interfaces/Dog';
 import Dashboard from './Pages/Dashboard/Dashboard'
-import {getDoggos, postDoggo} from './Services/ApiService/ApiService'
+import {getDoggos, postDoggo, updateDoggo} from './Services/ApiService/ApiService'
 
 const App = () => {
 
@@ -19,9 +19,16 @@ const App = () => {
     setDogList(updatedDogsArray)
   }
 
+  const handleUpdateDog = async (id: string, type: string, index: number) => {
+    await updateDoggo(id, type);
+    let updatedDogsArray = [...dogList];
+    type === 'Up' ? updatedDogsArray[index].age++ : updatedDogsArray[index].age--;
+    setDogList(updatedDogsArray);
+  }
+
   return (
     <div className="App">
-      <Dashboard doglist={dogList} handleAddDog={handleAddDog}>
+      <Dashboard doglist={dogList} handleAddDog={handleAddDog} handleUpdateDog={handleUpdateDog}>
       </Dashboard>
     </div>
   );
